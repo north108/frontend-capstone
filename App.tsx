@@ -1,12 +1,10 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+import React, { Component } from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import LoggedOut from "./src/screens/LoggedOut";
+export default class App extends Component {
+  render() {
+    return <LoggedOut />;
+  }
 }
 
 const styles = StyleSheet.create({
