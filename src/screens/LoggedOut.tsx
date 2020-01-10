@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, Image, TouchableHighlight, ScrollView, StyleSheet } from 'react-native';
 import colors from "../styles/color"
+import RoundedButton from '../components/buttons/RoundedButton'
 
-export default class LoggedOut extends Component {
+export default class LoggedOut extends Component{
   render () {
     return (
     <View style={styles.wrapper}>
@@ -14,6 +15,15 @@ export default class LoggedOut extends Component {
          <Text style={styles.welcomeText}>
            Welcome to Partly Sunny!
          </Text>
+         <RoundedButton
+          text='Login'
+          backgroundColor={colors.white}
+         />
+         <RoundedButton
+          text='Create an Account'
+          // textColor={colors.white}
+          backgroundColor={colors.white}
+         />
       </View>
     </View>
     );
