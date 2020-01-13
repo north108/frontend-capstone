@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView } from "react-native";
 import colors from "../styles/color";
 import InputField from "../components/form/InputField"
+import NextButton from "../components/buttons/NextButton"
 
 export default class Login extends Component{
   render() {
@@ -30,6 +31,7 @@ export default class Login extends Component{
 
             />
           </ScrollView>
+          <NextButton />
         </View>
       </KeyboardAvoidingView>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import colors from '../../styles/color'
 
 interface InputCustomProps {
@@ -8,6 +8,21 @@ interface InputCustomProps {
 }
 
 class InputField extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      secureInput: !(props.inputType ==='text' || props.inputType ==='email')
+    };
+    this.toggleShowPassword = this.toggleShowPassword.bind(this)
+  }
+
+  toggleShowPassword() {
+    this.setState ({
+      secureInput: !this.state.secureInput
+    });
+  }
+
   render() {
     const { 
       labelText,
@@ -18,7 +33,7 @@ class InputField extends Component {
       inputType,
       customStyle
      } = this.props;
-
+     const { secureInput } = this.state
      const color = labelColor || colors.white;
      const fontSize = labelTextSize || 14;
      const inputColor = textColor || colors.white;
@@ -26,13 +41,23 @@ class InputField extends Component {
     return (
       <View style={styles.wrapper}>
         <Text style={[{ color, fontSize, }, styles.label]}>{labelText}</Text>
+        {inputType ==='password' ? (  
+          <TouchableOpacity
+          style={styles.showButton}
+          onPress={this.toggleShowPassword}
+          >
+            <Text style={styles.showButtonText}>
+              {secureInput ? 'Show' : 'Hide'}
+            </Text>
+          </TouchableOpacity>
+        ) : null }
         <TextInput
           autoCorrect={false}
           style={[
             { color: inputColor, borderBottomColor: borderBottom },
             styles.inputField
           ]}
-          secureTextEntry={inputType === 'password'}
+          secureTextEntry={secureInput}
         />
       </View>
     );
@@ -50,8 +75,16 @@ const styles = StyleSheet.create({
   },
   inputField: {
     borderBottomWidth: 1,
-    paddingTop: 5,
-    paddingBottom: 5
+    paddingTop: 4,
+    paddingBottom: 4
+  },
+  showButton: {
+    position: "absolute",
+    right: 0
+  },
+  showButtonText: {
+    color: colors.white,
+    fontWeight: "700"
   }
 });
 

@@ -1,3 +1,5 @@
+// source: https://dev.to/kris/airbnb-clone-with-react-native-part-2-login-screen-ui-3nn5
+
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import LoggedOut from "./src/screens/LoggedOut";
