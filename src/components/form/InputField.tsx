@@ -9,6 +9,7 @@ class InputField extends Component {
     this.state = {
       secureInput: !(props.inputType ==='text' || props.inputType ==='email')
     };
+    
     this.toggleShowPassword = this.toggleShowPassword.bind(this)
   }
 

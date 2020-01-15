@@ -13,7 +13,7 @@ export default class LoggedOut extends Component{
           source={require('../img/partly-sunny.png')}
          />
          <Text style={styles.welcomeText}>
-           Welcome to Partly Sunny!
+           Welcome to Sweater Weather!
          </Text>
          <RoundedButton
           text='Login'
