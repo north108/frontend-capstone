@@ -4,7 +4,21 @@ import colors from "../styles/color";
 import InputField from "../components/form/InputField"
 import NextButton from "../components/buttons/NextButton"
 
+
 export default class Login extends Component{
+
+  handleEmailChange = email => {
+    this.setState({
+      email: email
+    });
+  };
+
+  handlePasswordChange = password => {
+    this.setState({
+      password: password
+    })
+  }
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.wrapper} behavior='padding'>
@@ -13,6 +27,7 @@ export default class Login extends Component{
             <Text style={styles.loginHeader}>Login</Text>
             <InputField 
               labelText='EMAIL ADDRESS'
+              onChangeText={this.handleEmailChange}
               labelTextSize={14}
               labelColor={colors.white}
               textColor={colors.white}
@@ -22,6 +37,7 @@ export default class Login extends Component{
             />
             <InputField 
               labelText="PASSWORD" 
+              onChangeText={this.handlePasswordChange}
               labelTextSize={14} 
               labelColor={colors.white} 
               textColor={colors.white} 

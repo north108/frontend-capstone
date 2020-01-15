@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import colors from '../../styles/color'
 
-interface InputCustomProps {
-  labelText: string,
-  labelTextSize: number
-}
-
 class InputField extends Component {
 
   constructor(props) {
@@ -31,7 +26,8 @@ class InputField extends Component {
       textColor,
       borderBottomColor,
       inputType,
-      customStyle
+      customStyle,
+      onChangeText
      } = this.props;
      const { secureInput } = this.state
      const color = labelColor || colors.white;
@@ -58,6 +54,7 @@ class InputField extends Component {
             styles.inputField
           ]}
           secureTextEntry={secureInput}
+          onChangeText={onChangeText}
         />
       </View>
     );
