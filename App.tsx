@@ -7,6 +7,14 @@ import MainScreen from './src/screens/MainScreen'
 import Weather from './src/components/Weather'
 import { WEATHER_API } from 'react-native-dotenv'
 
+const Outfits = {
+  90: ['Tanktop', 'Shorts', 'Flipflops', 'Sunglasses'],
+  80: ['Short Sleeved Top', 'Shorts', 'Sandels', 'Sunglasses'],
+  70: ['Short Sleeved Top', 'Jeans', 'Sneakers'],
+  60: ['Long Sleeved Top', 'Light Jacket', 'Pants', 'Sneakers'],
+  50: ['Long Sleeved Top', 'Coat', 'Pants', 'Boots'],
+  cold: ['Long Sleeved Top', 'Sweater', 'Winter Coat', 'Pants', 'Boots']
+}
 
 
 export default class App extends Component {
@@ -15,10 +23,12 @@ export default class App extends Component {
     isLoggedIn: true,
     temperature: 0,
     weatherCondition: null,
-    error: null
+    error: null,
+    outfit: null
   }
 
   componentDidMount(){
+    // if doesn't work, hard code seattle
     navigator.geolocation.getCurrentPosition(
       position => {
         this.fetchWeather(position.coords.latitude, position.coords.longitude);
@@ -54,9 +64,20 @@ export default class App extends Component {
       weatherCondition
     } = this.state;
 
-    if (this.state.isLoggedIn) {
-      return <Weather weather={weatherCondition} temperature={temperature} />
-    } else {
+    if (this.state.isLoggedIn && temperature >= 90) {
+      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[90]} />
+    } else if (this.state.isLoggedIn && temperature <= 90 && temperature >=80) {
+      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[80]} />
+    } else if (this.state.isLoggedIn && temperature <= 80 && temperature >=70) {
+      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[70]} />
+    } else if (this.state.isLoggedIn && temperature <= 70 && temperature >=60) {
+      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[60]} />
+    } else if (this.state.isLoggedIn && temperature <= 60 && temperature >=50) {
+      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[50]} />
+    } else if (this.state.isLoggedIn && temperature <= 50){
+      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits['cold']} />
+    }
+    else {
       return <LoggedOut />
     }
     // return <Login />;

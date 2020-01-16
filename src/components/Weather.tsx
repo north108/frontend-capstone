@@ -1,23 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet} from 'react-native';
+
+import { View, Text, StyleSheet } from 'react-native';
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { weatherConditions } from '../styles/color/WeatherConditions';
 import colors from "../styles/color";
 
-const Outfits = {
-  90: ['Tanktop', 'Shorts', 'Flipflops', 'Sunglasses'],
-  80: ['Short Sleeved Top', 'Shorts', 'Sandels', 'Sunglasses'],
-  70: ['Short Sleeved Top', 'Jeans', 'Sneakers'],
-  60: ['Long Sleeved Top', 'Light Jacket', 'Pants', 'Sneakers'],
-  50: ['Long Sleeved Top', 'Coat', 'Pants', 'Boots'],
-  cold: ['Long Sleeved Top', 'Sweater', 'Winter Coat', 'Pants', 'Boots']
-}
-
-const Weather = ({ weather, temperature }) => {
+const Weather = ({ weather, temperature, outfit }) => {
 
   if (weather != null) {
 
     return (
+     
       <View
         style={[
           styles.weatherContainer,
@@ -36,17 +30,21 @@ const Weather = ({ weather, temperature }) => {
           />
           <Text style={styles.tempText}>{temperature}˚</Text>
         </View>
+
         <View style={styles.bodyContainer}>
-          <Text style={styles.text}>{weatherConditions[weather].title}</Text>
-          {/* <Text style={styles.subtitle}>
-            {weatherConditions[weather].subtitle}
-          </Text> */}
+          <Text style={styles.text}>{weatherConditions[weather].title}</Text>   
         </View>
-        <View>
-          
+        <Text style={styles.title}>Today's Outfit</Text>
+      <View style={styles.bodyContainer}>
+          <Text>
+            {outfit.map((item, index)=>(
+              <Text style={styles.text} key={index}>{item}{'\n'}</Text>
+            ))}
+          </Text>
         </View>
 
       </View>
+    
 
     );
   } else {
@@ -58,15 +56,16 @@ const Weather = ({ weather, temperature }) => {
   };
 };
 
+
 const styles = StyleSheet.create({
   weatherContainer: {
     flex: 1
   },
   headerContainer: {
-    flex: 1,
+    flex: 2,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   tempText: {
     fontSize: 72,
@@ -77,11 +76,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     // paddingLeft: 25,
-    marginBottom: 40,
+    marginBottom: 10,
   },
   title: {
     fontSize: 30,
-    color: '#fff'
+    color: '#fff',
+    textAlign: 'center',
+    textDecorationLine: 'underline'
   },
   subtitle: {
     fontSize: 24,
