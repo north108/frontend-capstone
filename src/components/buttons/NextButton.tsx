@@ -4,19 +4,23 @@ import { TouchableHighlight, StyleSheet, Text, View } from "react-native";
 import colors from "../../styles/color";
 
 export default class NextButton extends Component {
+
   render() {
+    const { disabled, handlePress } = this.props
     return(
       <View style={styles.buttonWrapper}>
-        <TouchableHighlight style={[{ opacity: 0.6 }, styles.button]}>
+        <TouchableHighlight 
+        onPress={handlePress}
+        style={[{ opacity: 0.6 }, styles.button]}
+        disabled={disabled}
+        >
           <Icon
             name='angle-right'
             color={colors.green01}
             size={32}
             style={styles.icon}
           />
-
         </TouchableHighlight>
-
       </View>
     );
   }

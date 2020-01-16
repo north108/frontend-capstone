@@ -20,7 +20,7 @@ const Outfits = {
 export default class App extends Component {
 
   state = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     temperature: 0,
     weatherCondition: null,
     error: null,
@@ -78,7 +78,7 @@ export default class App extends Component {
       return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits['cold']} />
     }
     else {
-      return <LoggedOut />
+      return <Login />
     }
     // return <Login />;
     // // <LoggedOut />;

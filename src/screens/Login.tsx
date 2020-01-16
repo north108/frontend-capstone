@@ -1,11 +1,25 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView } from "react-native";
+import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView, Alert, Button } from "react-native";
 import colors from "../styles/color";
 import InputField from "../components/form/InputField"
 import NextButton from "../components/buttons/NextButton"
 
 
 export default class Login extends Component{
+
+  constructor() {
+    super();
+
+    this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      location: '',
+      id: '',
+      error: ''
+    }
+  }
 
   handleEmailChange = email => {
     this.setState({
@@ -16,6 +30,32 @@ export default class Login extends Component{
   handlePasswordChange = password => {
     this.setState({
       password: password
+    })
+  }
+
+  Login = async() => {
+    fetch('http://localhost:3200/login', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      })
+    }).then((response) => response.json())
+    .then((response) => {
+      if(typeof(response.message) != 'undefined'){
+        Alert.alert('Error', `Error: ${response.message}`);
+      } else {
+        this.setState({
+          id: response._id
+        });
+        Alert.alert('Welcome', 'You have succesfully logged iin');
+      }
+    }).catch((error) => {
+      console.log(error)
     })
   }
 
@@ -47,7 +87,7 @@ export default class Login extends Component{
 
             />
           </ScrollView>
-          <NextButton />
+          <NextButton  handlePress={this.Login.bind(this)}/>
         </View>
       </KeyboardAvoidingView>
     );
@@ -76,4 +116,5 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     marginBottom: 40
   }
+  
 });
