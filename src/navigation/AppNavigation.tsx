@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack'
-import Home from '../screens/Home-Test'
+import Home from '../screens/Weather'
 
 const AppNavigation = createStackNavigator(
   {

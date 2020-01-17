@@ -8,7 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@react-native-community/masked-view": "^0.1.6",
+    "@react-native-community/masked-view": "0.1.5",
     "expo": "~36.0.0",
     "prop-types": "^15.7.2",
     "react": "~16.9.0",
@@ -17,7 +17,7 @@
     "react-native-dotenv": "^0.2.0",
     "react-native-elements": "^1.2.7",
     "react-native-gesture-handler": "~1.5.0",
-    "react-native-safe-area-context": "^0.6.2",
+    "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.0.10",

@@ -33,31 +33,47 @@ export default class Login extends Component{
     })
   }
 
-  Login = async() => {
-    fetch('http://localhost:3200/login', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
-    }).then((response) => response.json())
-    .then((response) => {
-      if(typeof(response.message) != 'undefined'){
-        Alert.alert('Error', `Error: ${response.message}`);
-      } else {
-        this.setState({
-          id: response._id
-        });
-        Alert.alert('Welcome', 'You have succesfully logged iin');
+  onLogin = async() => {
+    const{ email, password} = this.state
+
+    try{
+      if (email.length > 0 && password.length > 0) {
+        this.props.navigation.navigate('App')
       }
-    }).catch((error) => {
-      console.log(error)
-    })
+    } catch (error) {
+      alert(error)
+    }
   }
+
+  // onLogin = async() => {
+  //   fetch('http://localhost:3200/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       email: this.state.email,
+  //       password: this.state.password
+  //     })
+  //   }).then((response) => response.json())
+  //   .then((response) => {
+  //     if(typeof(response.message) != 'undefined'){
+  //       Alert.alert('Error', `Error: ${response.message}`);
+        
+  //     } else {
+  //       this.setState({
+  //         id: response._id
+  //       });
+  //       this.props.navigation.navigate('App')
+  //       Alert.alert('Welcome', 'You have succesfully logged in');
+  //     }
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
+
+  goToSignup = () => this.props.navigation.navigate('Signup')
 
   render() {
     return (
@@ -87,7 +103,9 @@ export default class Login extends Component{
 
             />
           </ScrollView>
-          <NextButton  handlePress={this.Login.bind(this)}/>
+          {/* <NextButton  handlePress={this.Login.bind(this)}/> */}
+          <Button title='Login' onPress={this.onLogin} />
+          <Button title='Go to Signup' onPress={this.goToSignup}/>
         </View>
       </KeyboardAvoidingView>
     );
