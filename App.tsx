@@ -60,27 +60,27 @@ export default class App extends Component {
   }
 
   render() {
-    const {
-      temperature,
-      weatherCondition
-    } = this.state;
+    // const {
+    //   temperature,
+    //   weatherCondition
+    // } = this.state;
 
-    if (this.state.isLoggedIn && temperature >= 90) {
-      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[90]} />
-    } else if (this.state.isLoggedIn && temperature <= 90 && temperature >=80) {
-      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[80]} />
-    } else if (this.state.isLoggedIn && temperature <= 80 && temperature >=70) {
-      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[70]} />
-    } else if (this.state.isLoggedIn && temperature <= 70 && temperature >=60) {
-      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[60]} />
-    } else if (this.state.isLoggedIn && temperature <= 60 && temperature >=50) {
-      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[50]} />
-    } else if (this.state.isLoggedIn && temperature <= 50){
-      return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits['cold']} />
-    }
-    else {
+    // if (this.state.isLoggedIn && temperature >= 90) {
+    //   return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[90]} />
+    // } else if (this.state.isLoggedIn && temperature <= 90 && temperature >=80) {
+    //   return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[80]} />
+    // } else if (this.state.isLoggedIn && temperature <= 80 && temperature >=70) {
+    //   return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[70]} />
+    // } else if (this.state.isLoggedIn && temperature <= 70 && temperature >=60) {
+    //   return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[60]} />
+    // } else if (this.state.isLoggedIn && temperature <= 60 && temperature >=50) {
+    //   return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits[50]} />
+    // } else if (this.state.isLoggedIn && temperature <= 50){
+    //   return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits['cold']} />
+    // }
+    // else {
       return <AppContainer />
-    }
+    // }
     // return <Login />;
     // // <LoggedOut />;
   }
