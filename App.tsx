@@ -4,8 +4,9 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import LoggedOut from "./src/screens/LoggedOut";
 import Login from "./src/screens/Login"
 import MainScreen from './src/screens/MainScreen'
-import Weather from './src/components/Weather'
+import Weather from './src/screens/Weather'
 import { WEATHER_API } from 'react-native-dotenv'
+import AppContainer from './src/navigation'
 
 const Outfits = {
   90: ['Tanktop', 'Shorts', 'Flipflops', 'Sunglasses'],
@@ -78,7 +79,7 @@ export default class App extends Component {
       return <Weather weather={weatherCondition} temperature={temperature} outfit={Outfits['cold']} />
     }
     else {
-      return <Login />
+      return <AppContainer />
     }
     // return <Login />;
     // // <LoggedOut />;
