@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView, Alert, Button } from "react-native";
+import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView, Alert, Button, Image } from "react-native";
 import colors from "../styles/color";
 import InputField from "../components/form/InputField"
 import NextButton from "../components/buttons/NextButton"
+
 
 
 export default class Login extends Component{
@@ -66,6 +67,13 @@ export default class Login extends Component{
       <KeyboardAvoidingView style={styles.wrapper} behavior='padding'>
         <View style={styles.scrollViewWrapper}>
           <ScrollView style={styles.scrollView}>
+          <Image 
+          style={styles.logo}
+          source={require('../img/partly-sunny.png')}
+         />
+         <Text style={styles.loginHeader}>
+           Sweater Weather
+         </Text>
             {/* <Text style={styles.loginHeader}>Login</Text> */}
           
             <InputField 
@@ -97,7 +105,7 @@ export default class Login extends Component{
           // textColor={colors.white}
           backgroundColor={colors.white}
          /> */}
-          <Button title='Go to Signup' color='#ffffff' onPress={this.goToSignup}/>
+          <Button title='Create Account' color='#ffffff' onPress={this.goToSignup}/>
         </View>
       </KeyboardAvoidingView>
     )
@@ -209,25 +217,38 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     marginBottom: 40
   },
-  buttonWrapper: {
-    padding: 15,
-    display: "flex",
-    borderRadius: 40,
-    borderWidth: 1,
-    borderColor: colors.white,
-    marginBottom: 15,
-    alignItems: 'center',
-    fontSize: 16,
-    width: "100%",
-    textAlign: "center",
-    color: colors.green01
-    // background=colors.white
+  logo: {
+    width: 100,
+    height: 80,
+    marginTop: 0,
+    marginBottom: 0,
+    paddingLeft: 50
   },
-  buttonText: {
-    fontSize: 16,
-    width: "100%",
-    textAlign: "center",
-    color: colors.green01
+  welcomeText: {
+    fontSize: 30,
+    color: colors.white,
+    fontWeight: "300",
+    marginBottom: 40
   }
+  // buttonWrapper: {
+  //   padding: 15,
+  //   display: "flex",
+  //   borderRadius: 40,
+  //   borderWidth: 1,
+  //   borderColor: colors.white,
+  //   marginBottom: 15,
+  //   alignItems: 'center',
+  //   fontSize: 16,
+  //   width: "100%",
+  //   textAlign: "center",
+  //   color: colors.green01
+  //   // background=colors.white
+  // },
+  // buttonText: {
+  //   fontSize: 16,
+  //   width: "100%",
+  //   textAlign: "center",
+  //   color: colors.green01
+  // }
   
 });
