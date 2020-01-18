@@ -46,9 +46,13 @@ export default class Login extends Component{
         password: this.state.password,
       })
     }).then((response) => response.json())
-      .then(() => {
+      .then((response) => {
+        if(response.message){
+          Alert.alert('Error', `${response.message}`);
+        } else {
         Alert.alert('Welcome', 'You have succesfully logged in');
         this.props.navigation.navigate('App')
+        }
       })
       .catch((error) => {
         console.log(error)
@@ -87,13 +91,13 @@ export default class Login extends Component{
             />
           </ScrollView>
           {/* <NextButton  handlePress={this.Login.bind(this)}/> */}
-          <Button title='Login' color="#f194ff" onPress={this.onLogin}  />
+          <Button title='Login' color='#ffffff' onPress={this.onLogin}  />
           {/* <RoundedButton
           text='Create an Account'
           // textColor={colors.white}
           backgroundColor={colors.white}
          /> */}
-          <Button title='Go to Signup' color="#f194ff" onPress={this.goToSignup}/>
+          <Button title='Go to Signup' color='#ffffff' onPress={this.goToSignup}/>
         </View>
       </KeyboardAvoidingView>
     )
