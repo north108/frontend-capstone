@@ -5,17 +5,17 @@ import LoggedOut from "./src/screens/LoggedOut";
 import Login from "./src/screens/Login"
 import MainScreen from './src/screens/MainScreen'
 import Weather from './src/screens/Weather'
-import { WEATHER_API } from 'react-native-dotenv'
+// import { WEATHER_API } from 'react-native-dotenv'
 import AppContainer from './src/navigation'
 
-const Outfits = {
-  90: ['Tanktop', 'Shorts', 'Flipflops', 'Sunglasses'],
-  80: ['Short Sleeved Top', 'Shorts', 'Sandels', 'Sunglasses'],
-  70: ['Short Sleeved Top', 'Jeans', 'Sneakers'],
-  60: ['Long Sleeved Top', 'Light Jacket', 'Pants', 'Sneakers'],
-  50: ['Long Sleeved Top', 'Coat', 'Pants', 'Boots'],
-  cold: ['Long Sleeved Top', 'Sweater', 'Winter Coat', 'Pants', 'Boots']
-}
+// const Outfits = {
+//   90: ['Tanktop', 'Shorts', 'Flipflops', 'Sunglasses'],
+//   80: ['Short Sleeved Top', 'Shorts', 'Sandels', 'Sunglasses'],
+//   70: ['Short Sleeved Top', 'Jeans', 'Sneakers'],
+//   60: ['Long Sleeved Top', 'Light Jacket', 'Pants', 'Sneakers'],
+//   50: ['Long Sleeved Top', 'Coat', 'Pants', 'Boots'],
+//   cold: ['Long Sleeved Top', 'Sweater', 'Winter Coat', 'Pants', 'Boots']
+// }
 
 
 export default class App extends Component {
@@ -28,36 +28,36 @@ export default class App extends Component {
     outfit: null
   }
 
-  componentDidMount(){
-    // if doesn't work, hard code seattle
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        this.fetchWeather(position.coords.latitude, position.coords.longitude);
-        console.log('HEEEERE')
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
-      },
-      error => {
-        this.setState({
-          error: 'Error getting weather conditions.'
-        });
-      }
-    );
-  }
+  // componentDidMount(){
+  //   // if doesn't work, hard code seattle
+  //   navigator.geolocation.getCurrentPosition(
+  //     position => {
+  //       this.fetchWeather(position.coords.latitude, position.coords.longitude);
+  //       console.log('HEEEERE')
+  //       console.log(position.coords.latitude)
+  //       console.log(position.coords.longitude)
+  //     },
+  //     error => {
+  //       this.setState({
+  //         error: 'Error getting weather conditions.'
+  //       });
+  //     }
+  //   );
+  // }
 
-  fetchWeather(lat, lon){
-    fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${WEATHER_API}&units=imperial`
-    )
-    .then(response => response.json()
-    .then(json => {
-      // console.log(json);
-      this.setState({
-        temperature: json.main.temp,
-        weatherCondition: json.weather[0].main,
-      });
-    }));
-  }
+  // fetchWeather(lat, lon){
+  //   fetch(
+  //     `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${WEATHER_API}&units=imperial`
+  //   )
+  //   .then(response => response.json()
+  //   .then(json => {
+  //     // console.log(json);
+  //     this.setState({
+  //       temperature: json.main.temp,
+  //       weatherCondition: json.weather[0].main,
+  //     });
+  //   }));
+  // }
 
   render() {
     // const {

@@ -5,8 +5,8 @@ import InputField from "../components/form/InputField"
 
 export default class Signup extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       firstName: '',
@@ -52,7 +52,7 @@ export default class Signup extends React.Component {
   goToLogin = () => this.props.navigation.navigate('Login')
 
   onSignUp = async() => {
-    fetch('http://localhost:3200/users', {
+    fetch('https://en-capstone-backend.herokuapp.com/users', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

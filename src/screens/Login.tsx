@@ -8,8 +8,8 @@ import NextButton from "../components/buttons/NextButton"
 
 export default class Login extends Component{
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       firstName: '',
@@ -36,7 +36,7 @@ export default class Login extends Component{
 
 
   onLogin = async() => {
-    fetch('http://localhost:3200/login', {
+    fetch('https://en-capstone-backend.herokuapp.com/login', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
