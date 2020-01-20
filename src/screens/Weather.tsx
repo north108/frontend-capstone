@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from "react";
 
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button, Alert } from 'react-native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { weatherConditions } from '../styles/color/WeatherConditions';
@@ -75,6 +75,25 @@ const Outfits = {
     return outfit
   }
 
+  onLogout = async() => {
+    fetch('https://en-capstone-backend.herokuapp.com/logout', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((response) => response.json())
+      .then((response) => {
+        if(response.message){
+          Alert.alert('Error', `${response.message}`);
+        } else {
+        Alert.alert('You have succesfully logged out.');
+        this.props.navigation.navigate('Login')
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
 
   render(){ 
     const { temperature, weatherCondition } = this.state
@@ -94,6 +113,7 @@ const Outfits = {
           Sweater Weather
         </Text>
 
+
         <View style={styles.headerContainer}>
           <MaterialCommunityIcons
             size={72}
@@ -105,6 +125,7 @@ const Outfits = {
 
         <View style={styles.bodyContainer}>
           <Text style={styles.text}>{weatherConditions[weatherCondition].title}</Text>   
+  
         </View>
 
         <Text style={styles.title}>Today's Outfit</Text>
@@ -117,7 +138,7 @@ const Outfits = {
             ))}
           </Text>
         </View>
-
+        <Button title='Log Out' color='#ffffff' onPress={this.onLogout}/>
       </View>
     
 
