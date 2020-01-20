@@ -85,6 +85,7 @@ export default class Login extends Component{
               borderBottomColor={colors.white}
               inputType='email'
               customStyle={{marginBottom:30}}
+              autoCapitalize='none'
             />
             <InputField 
               labelText="PASSWORD" 
@@ -98,8 +99,8 @@ export default class Login extends Component{
 
             />
           </ScrollView>
-          {/* <NextButton  handlePress={this.Login.bind(this)}/> */}
-          <Button title='Login' color='#ffffff' onPress={this.onLogin}  />
+          <NextButton  handlePress={this.onLogin}/>
+          {/* <Button title='Login' color='#ffffff' onPress={this.onLogin}  /> */}
           {/* <RoundedButton
           text='Create an Account'
           // textColor={colors.white}

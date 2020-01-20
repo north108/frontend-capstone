@@ -34,9 +34,7 @@ const Outfits = {
     navigator.geolocation.getCurrentPosition(
       position => {
         this.fetchWeather(position.coords.latitude, position.coords.longitude);
-        console.log('HEEEERE')
-        console.log(position.coords.latitude)
-        console.log(position.coords.longitude)
+      
       },
       error => {
         this.setState({
@@ -110,7 +108,7 @@ const Outfits = {
         </View>
 
         <Text style={styles.title}>Today's Outfit</Text>
-        
+
         <View>
           <Text>
             

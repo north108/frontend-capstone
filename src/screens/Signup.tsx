@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, ScrollView, StyleSheet, KeyboardAvoidingView, Alert, Button } from "react-native";
 import colors from "../styles/color";
 import InputField from "../components/form/InputField"
+import NextButton from "../components/buttons/NextButton"
 
 export default class Signup extends React.Component {
 
@@ -120,6 +121,7 @@ export default class Signup extends React.Component {
               borderBottomColor={colors.white}
               inputType='email'
               customStyle={{marginBottom:30}}
+              autoCapitalize='none'
             />
             <InputField 
               labelText="PASSWORD" 
@@ -133,8 +135,8 @@ export default class Signup extends React.Component {
 
             />
           </ScrollView>
-          {/* <NextButton  handlePress={this.Login.bind(this)}/> */}
-          <Button title='Create Account' color="#f194ff" onPress={this.onSignUp}  />
+          <NextButton  handlePress={this.onSignUp}/>
+          {/* <Button title='Create Account' color="#f194ff" onPress={this.onSignUp}  /> */}
           {/* <RoundedButton
           text='Create an Account'
           // textColor={colors.white}
